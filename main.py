@@ -25,23 +25,23 @@ weights = np.random.uniform(-1, 1, (784, 10))
 
 
 for epoch in range(7):
-    for dataSet in range(30000):
+    for dataSet in range(50000):
         outputs = np.dot(X_train[dataSet], weights)
         guess = np.argmax(outputs)
 
         if guess != y_train[dataSet]:
-            weights[:, y_train[dataSet]] += 0.1 * X_train[dataSet]
-            weights[:, guess] -= 0.1 * X_train[dataSet]
+            weights[:, y_train[dataSet]] += 0.01 * X_train[dataSet]
+            weights[:, guess] -= 0.01 * X_train[dataSet]
 
 #Test loop
 correct = 0
-for dataSet in range(30001,60000):
+for dataSet in range(50001,60000):
     outputs = np.dot(X_train[dataSet], weights)
     guess = np.argmax(outputs)
 
     if guess == y_train[dataSet]:
         correct+=1
 
-correct_percent = correct/(60000-30001) * 100
+correct_percent = correct/(60000-50001) * 100
 
 print (correct_percent, "% Correct")
